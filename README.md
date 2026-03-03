@@ -145,20 +145,26 @@ Al manejar datos de salud sensibles, el sistema sigue reglas estrictas:
 
 ## 🚀 Levantar el Entorno de Desarrollo
 
-```bash
-# 1. Clonar los 3 repositorios en una carpeta común
-git clone <backend-repo> backend
-git clone <frontend-repo> frontend
-git clone <setup-repo> setup
+El repositorio principal usa **git submodules** para incluir los tres repos (`backend`, `frontend`, `setup`). Es importante clonar con el flag correcto para que todo quede en un solo paso.
 
+```bash
+# 1. Clonar el repo principal junto con todos los submódulos
+git clone --recurse-submodules https://github.com/nacho1706/dermamed.git
+
+# Si ya clonaste sin el flag, inicializá los submódulos manualmente
+git submodule update --init --recursive
+```
+
+```bash
 # 2. Configurar variables de entorno del backend
 cp backend/.env.example backend/.env
+# Editá el .env con tus claves locales (DB, JWT, etc.)
 
 # 3. Levantar todos los servicios
 cd setup
 docker compose up -d
 
-# 4. Correr migraciones y seeders
+# 4. Correr migraciones (y seeders si es primera vez)
 docker exec backend-dermamed php artisan migrate --seed
 ```
 
