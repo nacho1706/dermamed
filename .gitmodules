@@ -1,0 +1,9 @@
+[submodule "backend"]
+	path = backend
+	url = https://github.com/nacho1706/dermamed_back
+[submodule "frontend"]
+	path = frontend
+	url = https://github.com/nacho1706/dermamed_front
+[submodule "setup"]
+	path = setup
+	url = https://github.com/nacho1706/setup/tree/dermamed
